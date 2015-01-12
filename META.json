@@ -53,5 +53,16 @@
       }
    },
    "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/addsict/p5-HAL-Tiny/issues"
+      },
+      "homepage" : "https://github.com/addsict/p5-HAL-Tiny",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/addsict/p5-HAL-Tiny.git",
+         "web" : "https://github.com/addsict/p5-HAL-Tiny"
+      }
+   },
    "version" : "0.01"
 }

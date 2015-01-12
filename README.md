@@ -29,9 +29,36 @@ HAL::Tiny - Hypertext Application Language Encoder
         },
     );
 
+    $resource->as_json;
+
 # DESCRIPTION
 
-HAL::Tiny is ...
+HAL::Tiny is a minimum implementation of Hypertext Application Language(HAL).
+
+# METHODS
+
+- **new** - Create a resource instance.
+
+        HAL::Tiny->new(%args);
+
+    %args are
+
+    - state
+
+        The hash of representing the current state.
+
+    - links
+
+        The hash of links related to the current state.
+
+    - embedded
+
+        The hash of embedded objects.
+        Each hash value must be an array of HAL::Tiny objects or a HAL::Tiny object.
+
+- **as\_json** - Encode to json.
+
+    Encode to json string.
 
 # LICENSE
 
