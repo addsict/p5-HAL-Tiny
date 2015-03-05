@@ -88,9 +88,13 @@ HAL::Tiny - Hypertext Application Language Encoder
         links => +{
             self => '/orders',
             next => '/orders?page=2',
+            find => {
+                href      => '/orders{?id}',
+                templated => JSON::true,
+            },
         },
         embedded => +{
-            order => [
+            orders => [
                 HAL::Tiny->new(
                     state => +{ id => 10 },
                     links => +{ self => '/orders/10' },
