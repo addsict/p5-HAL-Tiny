@@ -1,4 +1,5 @@
 # NAME
+[![Build Status](https://travis-ci.org/addsict/p5-HAL-Tiny.svg?branch=master)](https://travis-ci.org/addsict/p5-HAL-Tiny)
 
 HAL::Tiny - Hypertext Application Language Encoder
 
