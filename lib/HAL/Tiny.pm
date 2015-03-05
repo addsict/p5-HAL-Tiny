@@ -32,8 +32,13 @@ sub as_hash {
     if (my $links = $self->{links}) {
         my $v = +{};
         for my $rel (keys %$links) {
-            $v->{$rel} = +{
-                href => $links->{$rel},
+            my $value = $links->{$rel};
+            if (ref $value) {
+                $v->{$rel} = $value;
+            } else {
+                $v->{$rel} = +{
+                    href => $links->{$rel},
+                }
             }
         }
         $hash{_links} = $v;
