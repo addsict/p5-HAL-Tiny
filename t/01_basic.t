@@ -13,9 +13,20 @@ my $resource = HAL::Tiny->new(
     links => +{
         self => '/orders',
         next => '/orders?page=2',
+        find => {
+            href      => '/orders{?id}',
+            templated => JSON::true,
+        },
+        curies => [
+            {
+                name      => 'acme',
+                href      => 'http://docs.acme.com/relations/{rel}',
+                templated => JSON::true,
+            }
+        ],
     },
     embedded => +{
-        order => [
+        orders => [
             HAL::Tiny->new(
                 state => +{ id => 10 },
                 links => +{ self => '/orders/10' },
@@ -35,10 +46,16 @@ is_deeply(decode_json($resource->as_json), decode_json(q!
     "shippedToday": 20,
     "_links": {
         "self": { "href": "/orders" },
-        "next": { "href": "/orders?page=2" }
+        "next": { "href": "/orders?page=2" },
+        "find": { "href": "/orders{?id}", "templated": true },
+        "curies": [{
+            "name": "acme",
+            "href": "http://docs.acme.com/relations/{rel}",
+            "templated": true
+        }]
     },
     "_embedded": {
-        "order": [{
+        "orders": [{
             "id": 10,
             "_links": {
                 "self": { "href": "/orders/10" }
