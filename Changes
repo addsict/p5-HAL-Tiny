@@ -2,6 +2,10 @@ Revision history for Perl extension HAL-Tiny
 
 {{$NEXT}}
 
+0.02 2015-03-05T14:15:06Z
+
+    - Implement Link Object by hixi
+
 0.01 2015-01-12T07:01:37Z
 
     - original version
