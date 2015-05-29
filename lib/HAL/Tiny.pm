@@ -5,7 +5,7 @@ use warnings;
 
 use JSON qw/encode_json/;
 
-our $VERSION = "0.02";
+our $VERSION = "0.03";
 
 sub new {
     my ($class, %args) = @_;
@@ -48,22 +48,24 @@ sub as_hash {
         my $v = +{};
         for my $rel (keys %$embedded) {
             if (ref $embedded->{$rel} eq 'ARRAY') {
-                my @hashed = map { $_->as_hash } @{$embedded->{$rel}};
+                my @hashed = map { $_->as_hashref } @{$embedded->{$rel}};
                 $v->{$rel} = \@hashed;
             } else {
-                $v->{$rel} = $embedded->{$rel}->as_hash;
+                $v->{$rel} = $embedded->{$rel}->as_hashref;
             }
         }
         $hash{_embedded} = $v;
     }
 
-    return \%hash;
+    return %hash;
+}
+
+sub as_hashref {
+    +{ $_[0]->as_hash };
 }
 
 sub as_json {
-    my ($self) = @_;
-    my $hash = $self->as_hash;
-    return encode_json($hash);
+    encode_json($_[0]->as_hashref);
 }
 
 

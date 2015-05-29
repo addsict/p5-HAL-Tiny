@@ -64,7 +64,7 @@
          "web" : "https://github.com/addsict/p5-HAL-Tiny"
       }
    },
-   "version" : "0.02",
+   "version" : "0.03",
    "x_contributors" : [
       "Hiroyoshi Houchi <git@hixi-hyi.com>"
    ]
